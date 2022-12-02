@@ -133,8 +133,9 @@ class _HomePageState extends State<HomePage> {
                             if (index + (page * itemPerPage) > totalItems - 1) {
                               return Container();
                             } else {
-                              final i = getItemIndex(list, index);
+                              final i = homePageStore.getItemIndex(list, index);
                               return ListTile(
+                                key: Key(CoreKeys.listTilePost),
                                 leading: SizedBox(
                                   height: 80,
                                   width: 80,
@@ -203,8 +204,5 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  getItemIndex(list, index){
-    var result = list[index + (homePageStore.page * homePageStore.itemPerPage)];
-    return result;
-  }
+  
 }

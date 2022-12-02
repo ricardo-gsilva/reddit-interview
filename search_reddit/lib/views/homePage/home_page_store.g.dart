@@ -177,6 +177,20 @@ mixin _$HomePageStore on _HomePageStoreBase, Store {
     return _$getTopPostsAsyncAction.run(() => super.getTopPosts(search, limit));
   }
 
+  late final _$_HomePageStoreBaseActionController =
+      ActionController(name: '_HomePageStoreBase', context: context);
+
+  @override
+  dynamic getItemIndex(dynamic list, dynamic index) {
+    final _$actionInfo = _$_HomePageStoreBaseActionController.startAction(
+        name: '_HomePageStoreBase.getItemIndex');
+    try {
+      return super.getItemIndex(list, index);
+    } finally {
+      _$_HomePageStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

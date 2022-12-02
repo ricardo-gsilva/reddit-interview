@@ -53,7 +53,7 @@ void main(){
 
       await Future.delayed(const Duration(seconds: 5));
       
-      expect(find.byKey(Key(CoreKeys.listViewBuilder)), findsOneWidget);
+      expect(find.byKey(Key(CoreKeys.listTilePost)), findsOneWidget);
         
     });
 }

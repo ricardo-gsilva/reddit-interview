@@ -51,4 +51,10 @@ abstract class _HomePageStoreBase with Store {
       
     }
   }
+
+@action
+  getItemIndex(list, index){
+    var result = list[index + (page * itemPerPage)];
+    return result;
+  }
 }

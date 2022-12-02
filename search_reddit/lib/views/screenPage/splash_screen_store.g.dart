@@ -25,6 +25,38 @@ mixin _$SplashScreenStore on _SplashScreenStoreBase, Store {
     });
   }
 
+  late final _$userAtom =
+      Atom(name: '_SplashScreenStoreBase.user', context: context);
+
+  @override
+  TextEditingController get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(TextEditingController value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
+  late final _$passAtom =
+      Atom(name: '_SplashScreenStoreBase.pass', context: context);
+
+  @override
+  TextEditingController get pass {
+    _$passAtom.reportRead();
+    return super.pass;
+  }
+
+  @override
+  set pass(TextEditingController value) {
+    _$passAtom.reportWrite(value, super.pass, () {
+      super.pass = value;
+    });
+  }
+
   late final _$chargeSplashSecondaryAsyncAction = AsyncAction(
       '_SplashScreenStoreBase.chargeSplashSecondary',
       context: context);
@@ -38,7 +70,9 @@ mixin _$SplashScreenStore on _SplashScreenStoreBase, Store {
   @override
   String toString() {
     return '''
-visible: ${visible}
+visible: ${visible},
+user: ${user},
+pass: ${pass}
     ''';
   }
 }

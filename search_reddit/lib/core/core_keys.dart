@@ -8,6 +8,7 @@ class CoreKeys {
   static String boxLogin = 'boxLogin';
   static String search = 'search';
   static String listViewBuilder = 'listViewBuilder';
+  static String listTilePost = 'listTilePost';
 
   //Page
   static String homePage = 'homePage';
