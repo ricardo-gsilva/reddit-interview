@@ -56,7 +56,6 @@ class _CommentsPageState extends State<CommentsPage> {
                     itemCount: commentsPageStore.itemCount,
                     itemBuilder: (context, index) {
                       List listComments = commentsPageStore.resultComment[0].data.children;
-                        // purpleData = commentsPageStore.purpleData;
                         return ListTile(
                           leading: SizedBox(
                             height: 80,

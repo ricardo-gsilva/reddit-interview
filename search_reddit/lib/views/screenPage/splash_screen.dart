@@ -104,20 +104,6 @@ class SplashScreenPageState extends State<SplashScreenPage> {
                               ),
                               CustomTextField(
                                 key: Key(CoreKeys.textFieldPass), controller: store.pass, hintText: CoreStrings.typeItPass),
-                    
-                                            
-                              // CustomButton(
-                              //     textButton: CoreStrings.loginFirebase,
-                              //     image: CoreAssets.logoGoogleBtn,
-                              //     onPressed: () {
-                              //       AuthService().signInWithGoogle();                        
-                              //     }),
-                              // CustomButton(
-                              //     textButton: CoreStrings.loginReddit,
-                              //     image: CoreAssets.logoRedditBtn,
-                              //     onPressed: () {
-                              //       Navigator.pushNamed(context, Routes.homePage);
-                              //     }),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
