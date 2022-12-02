@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,7 @@ class SplashScreenPageState extends State<SplashScreenPage> {
             ),
             Visibility(
               key: Key(CoreKeys.boxLogin),
-              visible: true,
+              visible: store.visible,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 0),
                 child: SizedBox(
@@ -112,7 +113,59 @@ class SplashScreenPageState extends State<SplashScreenPage> {
                                     child: CustomTextButton(
                                           fontSize: 15,
                                           onPressed: () {
-                                            Navigator.pushNamed(context, Routes.homePage);
+                                            showDialog(
+                                              context: context, 
+                                              builder: (_){
+                                                return AlertDialog(
+                                                  title: CustomText(fontSize: 22, text: CoreStrings.registerEmailPass,),
+                                                  actions: [
+                                                        Align(
+                                                          child: CustomTextField(
+                                                            key: Key(CoreKeys.textFieldEmail), controller: store.user, hintText: CoreStrings.typeItEmail,
+                                                          ),
+                                                        ),
+                                                        const SizedBox( height: 10,),
+                                                        Align(
+                                                          child: CustomTextField(
+                                                            key: Key(CoreKeys.textFieldPass), controller: store.pass, hintText: CoreStrings.typeItPass),
+                                                        ),                                                      
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 10),
+                                                      child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                        children: [
+                                                          CustomButton(
+                                                          primary: CoreColors.black,
+                                                          onPrimary: CoreColors.white,
+                                                          textButton: CoreStrings.cancel,
+                                                          onPressed: (){
+                                                            Navigator.pop(context);
+                                                          },
+                                                          width: 120
+                                                      ),
+                                                      CustomButton(
+                                                          primary: CoreColors.redShade400,
+                                                          onPrimary: CoreColors.white,
+                                                          textButton: CoreStrings.register,
+                                                          onPressed: () async{
+                                                            String password = store.pass.text;
+                                                            String email = store.user.text;
+
+                                                            await auth.register(email, password);
+                                                            store.pass.text = '';
+                                                            store.user.text = '';
+                                                            Navigator.pushNamed((_), Routes.splashScreen);
+                                                          },
+                                                          width: 120
+                                                      )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                  
+                                                );
+                                              }
+                                            );
                                           },
                                           textButton: CoreStrings.registerHere,
                                         ),

@@ -16,4 +16,7 @@ class CoreStrings {
   static String wrongPassword = "wrong-password";
   static String wrongPasswordThatUser = "Nenhum usuário encontrar com esse email";
   static String notAuthInvalidInputs = "Não autenticado, informações inválidas";
+  static String registerEmailPass = 'Digite email e senha para se registrar.';
+  static String cancel = 'Cancelar';
+  static String register = 'Registrar';
   }
